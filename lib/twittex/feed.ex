@@ -9,6 +9,7 @@ defmodule Twittex.Feed do
     user
     |> Ecto.assoc(:tweeks)
     |> order_by([m], desc: m.inserted_at, desc: m.id)
+    |> preload(:user)
     |> Repo.all()
   end
 end
