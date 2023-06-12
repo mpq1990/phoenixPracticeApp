@@ -1,0 +1,12 @@
+<form id="avatar-form" phx-submit="save" phx-change="validate">
+  <%= for entry <- @uploads.avatar.entries do %>
+    <figure>
+      <.live_img_preview entry={entry} />
+      <figcaption><%= entry.client_name %></figcaption>
+    </figure>
+    <.upload_error :for={code <- upload_errors(@uploads.avatar, entry)} code={code} />
+  <% end %>
+
+  <.live_file_input upload={@uploads.avatar} />
+  <.button phx-disable-with="Uploading...">Upload</.button>
+</form>

@@ -1,6 +1,7 @@
 defmodule TwittexWeb.UserLive do
   use TwittexWeb, :live_view
   import Phoenix.HTML.Tag, only: [img_tag: 2]
+  import TwittexWeb.AvatarHelper
 
   alias Twittex.Accounts
   alias Twittex.Feed

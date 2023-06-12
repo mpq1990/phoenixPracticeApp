@@ -182,6 +182,12 @@ defmodule Twittex.Accounts do
     UserNotifier.deliver_update_email_instructions(user, update_email_url_fun.(encoded_token))
   end
 
+  def save_user_avatar!(user, avatar) do
+    user
+    |> User.avatar_changeset(avatar)
+    |> Repo.update!()
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for changing the user password.
 
