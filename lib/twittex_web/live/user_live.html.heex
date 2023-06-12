@@ -10,7 +10,8 @@
 
     <div class="text-gray-500 text-sm">
       Member since <%= Calendar.strftime(@user.inserted_at, "%m/%d/%Y") %>
-      <br /> 0 Tweeks
+      <br />
+      <%= length(@tweeks) %> <%= "Tweek#{if length(@tweeks) != 1, do: "s"}" %>
     </div>
   </div>
 </div>
@@ -18,5 +19,13 @@
 <hr />
 
 <div class="pt-5">
-  This user hasn't posted anything yet.
+  <%= if Enum.empty?(@tweeks) do %>
+    This user hasn't posted anything yet.
+  <% else %>
+    <ol>
+      <li :for={tweek <- @tweeks}>
+        <%= tweek.content %> - <%= tweek.inserted_at %>
+      </li>
+    </ol>
+  <% end %>
 </div>
