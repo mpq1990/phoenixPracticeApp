@@ -65,6 +65,19 @@ defmodule TwittexWeb.UserAuth do
     |> clear_session()
   end
 
+  def require_confirmed_user(conn, _) do
+    current_user = conn.assigns.current_user
+
+    if current_user && !is_nil(current_user.confirmed_at) do
+      conn
+    else
+      conn
+      |> put_flash(:error, "You must confirm your email address to access this page.")
+      |> redirect(to: ~p"/users/confirm")
+      |> halt()
+    end
+  end
+
   @spec log_out_user(Plug.Conn.t()) :: Plug.Conn.t()
   @doc """
   Logs the user out.
