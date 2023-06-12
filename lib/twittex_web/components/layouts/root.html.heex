@@ -16,7 +16,11 @@
       <ul class="list-none text-right">
         <%= if @current_user do %>
           <li><b><%= @current_user.username %></b></li>
-          <li><.link href={~p"/#{@current_user.username}"}>My profile</.link></li>
+          <li>
+            <.link class="text-sky-500 hover:text-sky-600" href={~p"/#{@current_user}"}>
+              My profile
+            </.link>
+          </li>
           <li><.link href={~p"/users/settings"}>Settings</.link></li>
           <li><.link href={~p"/users/log_out"} method="delete">Log out</.link></li>
         <% else %>
