@@ -1,0 +1,22 @@
+<div class="mb-5 flex">
+  <div class="mr-5">
+    <%= img_tag(~p"/images/default_avatar.png", height: 80, width: 80, alt: "Avatar") %>
+  </div>
+
+  <div>
+    <div class="font-bold text-lg">
+      @<%= @user.username %>
+    </div>
+
+    <div class="text-gray-500 text-sm">
+      Member since <%= Calendar.strftime(@user.inserted_at, "%m/%d/%Y") %>
+      <br /> 0 Tweeks
+    </div>
+  </div>
+</div>
+
+<hr />
+
+<div class="pt-5">
+  This user hasn't posted anything yet.
+</div>

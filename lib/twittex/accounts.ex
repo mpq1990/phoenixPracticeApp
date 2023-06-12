@@ -48,6 +48,10 @@ defmodule Twittex.Accounts do
     if User.valid_password?(user, password), do: user
   end
 
+  def get_user_by_username!(username) do
+    Repo.get_by!(User, username: username)
+  end
+
   @doc """
   Gets a single user.
 
