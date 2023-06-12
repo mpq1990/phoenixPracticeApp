@@ -65,6 +65,7 @@ defmodule TwittexWeb.UserAuth do
     |> clear_session()
   end
 
+  @spec log_out_user(Plug.Conn.t()) :: Plug.Conn.t()
   @doc """
   Logs the user out.
 
